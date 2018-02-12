@@ -1,13 +1,13 @@
 # Summary
 
 * [Introduction](README.md)
-* Creational Design Patterns
-  * Abstract Factory
+* [Creational Design Patterns](creational-design-patterns.md)
+  * [Abstract Factory](creational-design-patterns/abstract-factory.md)
   * Builder
   * Factory Method
   * Prototype
   * Singltone
-* Structural Design Patterns
+* [Structural Design Patterns](structural-design-patterns.md)
   * Adapter
   * Bridge
   * Composite
@@ -27,6 +27,4 @@
   * Strategy
   * Template Method
   * Visitor
-
-
 
