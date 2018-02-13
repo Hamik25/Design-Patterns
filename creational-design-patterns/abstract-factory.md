@@ -2,9 +2,13 @@
 
 ---
 
+#### 
+
 #### Definition
 
 Provide an interface for creating families of related or dependent objects without specifying their concrete classes.
+
+#### 
 
 #### Summary
 
@@ -37,7 +41,7 @@ This includes scenarios in which the creation process involves object caching, s
 
 * declares an interface for the products that are being created
 
-
+#### 
 
 #### Sample code in JavaScript
 
@@ -46,6 +50,8 @@ JavaScript does not support class-based inheritance therefore the abstract class
 In the example we have two Concrete Factories: EmployeeFactory and VendorFactory. The first one creates Employee instances, the second one Vendor instances. Both products are person types \(with the same interface\) which allows the client to treat them the same. An array with two employees and two vendors is created. Each person is then asked to say what aand who they are.
 
 The log function is helper which collects and displays results.
+
+
 
 ```js
 function Employee(name) {
