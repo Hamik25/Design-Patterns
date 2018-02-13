@@ -2,9 +2,9 @@
 
 * [Introduction](README.md)
 * [Creational Design Patterns](creational-design-patterns.md)
-  * [Abstract Factory](creational-design-patterns/abstract-factory.md)
+  * [Abstract Factory  \[=====\]](creational-design-patterns/abstract-factory.md)
   * [Builder](creational-design-patterns/builder.md)
-  * Factory Method
+  * [Factory](creational-design-patterns/factory-method.md)
   * Prototype
   * Singltone
 * [Structural Design Patterns](structural-design-patterns.md)
