@@ -55,23 +55,26 @@ The client has control over the actual object construction process by offering d
 The log function is a helper which collects and displays results.
 
 ```js
+// Director
 function Shop() {
     this.construct = function(builder) {
-        builder.step1();
-        builder.step2();
+        builder.step1().step2();
         return builder.get();
     }
 }
 
+// Car Builder constructor
 function CarBuilder() {
     this.car = null;
 
     this.step1 = function() {
         this.car = new Car();
+        return this;
     };
 
     this.step2 = function() {
-        this.car.addParts();
+        this.car.addParts(4);
+        return this;
     };
 
     this.get = function() {
@@ -79,15 +82,18 @@ function CarBuilder() {
     };
 }
 
+// Truck Builder constructor
 function TruckBuilder() {
     this.truck = null;
 
     this.step1 = function() {
         this.truck = new Truck();
+        return this;
     };
 
     this.step2 = function() {
-        this.truck.addParts();
+        this.truck.addParts(2);
+        return this;
     };
 
     this.get = function() {
@@ -95,29 +101,26 @@ function TruckBuilder() {
     };
 }
 
-function Car() {
-    this.doors = 0;
-
-    this.addParts = function() {
-        this.doors = 4;
-    };
-
-    this.say = function() {
-        log.add("I am a " + this.doors + "-door car");
-    };
+// Product constructor
+function Product() {
+  this.doors = 0;
 }
 
-function Truck() {
-    this.doors = 0;
-
-    this.addParts = function() {
-        this.doors = 2;
-    };
-
-    this.say = function() {
-        log.add("I am a " + this.doors + "-door truck");
-    };
+Product.prototype.addParts = function(count) {
+  this.doors = count;
 }
+
+Product.prototype.say = function() {
+  log.add("I am a " + this.doors + "-door car");
+}
+
+// Car Product constructor
+function Car() {}
+Car.prototype =  Object.create(Product.prototype);
+
+// Truck Product constructor
+function Truck() {}
+Truck.prototype = Object.create(Product.prototype);
 
 // log helper
 var log = (function () {
@@ -129,17 +132,24 @@ var log = (function () {
 })();
 
 function run() {
+    // Director instance
     var shop = new Shop();
+
+    // Builder instances
     var carBuilder = new CarBuilder();
     var truckBuilder = new TruckBuilder();
+
+    // Director construct calls
     var car = shop.construct(carBuilder);
     var truck = shop.construct(truckBuilder);
 
+    // Products Instances
     car.say();
     truck.say();
 
     log.show();
 }
+
 ```
 
 
