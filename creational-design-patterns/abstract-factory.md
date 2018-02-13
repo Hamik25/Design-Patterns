@@ -39,3 +39,72 @@ This includes scenarios in which the creation process involves object caching, s
 
 
 
+#### Sample code in JavaScript
+
+JavaScript does not support class-based inheritance therefore the abstract classes as depicted in the diagram are not used in the JavaScript sample. Abstract classes and interfaces enforce consistent interfaces in delivered classes. In JavaScript we must ensure this consistency ourselves by making sure that each 'Concrete' object has the same interface definition \(i.e. properties and methods\) as the others.
+
+In the example we have two Concrete Factories: EmployeeFactory and VendorFactory. The first one creates Employee instances, the second one Vendor instances. Both products are person types \(with the same interface\) which allows the client to treat them the same. An array with two employees and two vendors is created. Each person is then asked to say what aand who they are.
+
+The log function is helper which collects and displays results.
+
+```js
+function Employee(name) {
+    this.name = name;
+
+    this.say = function() {
+        log.add("I am employee " + name);
+    };
+}
+
+function EmployeeFactory() {
+
+    this.create = function(name) {
+        return new Employee(name); 
+    };
+}
+
+function Vendor(name) {
+    this.name = name;
+
+    this.say = function() {
+        log.add("I am vendor " + name);
+    };
+}
+
+function VendorFactory() {
+
+    this.create = function(name) {
+        return new Vendor(name);
+    };
+}
+
+// log helper
+var log = (function(){
+    var log = "";
+
+    return {
+        add: function(msg) { log += msg + "\n"; },
+        show: function() { console.log(log); log = ""; }
+    };
+})();
+
+function run() {
+    var persons = [];
+    var employeeFactory = new EmployeeFactory();
+    var vendorFactory = new VendorFactory();
+
+    persons.push(employeeFactory.create("Joan DiSilva"));
+    persons.push(employeeFactory.create("Tim O'Neill"));
+    persons.push(vendorFactory.create("Gerald Watson"));
+    persons.push(vendorFactory.create("Nicole McNight"));
+
+    for (var i = 0, len = persons.length; i < len; i++) {
+        persons[i].say();
+    }
+
+    log.show();
+}
+```
+
+
+

@@ -3,7 +3,7 @@
 * [Introduction](README.md)
 * [Creational Design Patterns](creational-design-patterns.md)
   * [Abstract Factory](creational-design-patterns/abstract-factory.md)
-  * Builder
+  * [Builder](creational-design-patterns/builder.md)
   * Factory Method
   * Prototype
   * Singltone
