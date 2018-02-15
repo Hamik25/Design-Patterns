@@ -56,24 +56,24 @@ The log function is a helper which collects and displays results.
 // Factory
 function HeroFactory() {
 	this.createHero = function(type) {
-	var hero;
-	
-	switch(type) {
-		case 'IRON_MAN':
-			hero = new IronMan('Iron Man', 'Iron Costume');
-			break;
-		case 'SPIDER_MAN':
-			hero = new SpiderMan('Spider Man', 'Spider Power');
-			break;
-		case 'HULK':
-			hero = new Hulk('Hulk', 'Power of my muscles');
-			break;
-		case 'TOR':
-			hero = new Tor('Tor', 'My Hammer');
-			break;
-	}
-	
-	return hero;
+		var hero;
+
+		switch(type) {
+			case 'IRON_MAN':
+				hero = new IronMan('Iron Man', 'Iron Costume');
+				break;
+			case 'SPIDER_MAN':
+				hero = new SpiderMan('Spider Man', 'Spider Power');
+				break;
+			case 'HULK':
+				hero = new Hulk('Hulk', 'Power of my muscles');
+				break;
+			case 'TOR':
+				hero = new Tor('Tor', 'My Hammer');
+				break;
+		}
+
+		return hero;
 	}
 };
 
@@ -138,7 +138,7 @@ function heroStore() {
     }
  
     log.show();
-};
+}
 ```
 
 
