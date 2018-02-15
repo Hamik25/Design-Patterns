@@ -36,7 +36,11 @@ The objects participating in this pattern are:
 
 **Products **-- in sample code: **IronMan, SpiderMan, Hulk, Tor**
 
-* represents the complex objects being assembled
+* the product being created
+
+
+
+#### Sample code in JavaScript
 
 
 
