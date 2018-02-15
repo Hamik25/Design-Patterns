@@ -8,6 +8,8 @@
 
 Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory pattern lets a class defer instantiation to subclasses.
 
+#### 
+
 #### Summary
 
 A Factory pattern creates new objects as instructed by the client. One way to create objects in JavaScript is by invoking a constructor function with the new operator. There are situations however, where the client does not, or should not, know which one of several candidate objects to instantiate. The Factory pattern allows the client to delegate object creation while still retaining control over which type to instantiate.
@@ -38,7 +40,7 @@ The objects participating in this pattern are:
 
 * the product being created
 
-
+#### 
 
 #### Sample code in JavaScript
 
