@@ -18,7 +18,7 @@ The most common motivation for using Builder is to simplify client code that cre
 
 Usually it is the last step that returns the newly created object which makes it easy for a Builder to participate in fluent interfaces in which multiple method calls, separated by dot operators, are chained together \(note: fluent interfaces are implementation of the Chaining Pattern as presented in the Modern patterns section\).
 
-![](/assets/ice_screenshot_20180215-164348.png)
+![](/assets/ice_screenshot_20180215-164540.png)
 
 #### Participants
 
