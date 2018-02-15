@@ -65,7 +65,7 @@ Car.prototype =  Object.create(Product.prototype);
 function Truck() {}
 Truck.prototype = Object.create(Product.prototype);
 
-// log helper
+// Log helper
 var log = (function () {
     var log = "";
     return {
