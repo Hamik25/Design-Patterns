@@ -28,7 +28,7 @@ The objects participating in this pattern are:
 
 * constructs products by using the Builder's multistep interface
 
-**Builder **-- not used in JavaScript
+**AbstractBuilder **-- not used in JavaScript
 
 * declares a multistep interface for creating a complex product
 
