@@ -32,7 +32,7 @@ The objects participating in this pattern are:
 
 * declares a multistep interface for creating a complex product
 
-**ConcreteBuilder **-- in sample code: **CarBuilder, TruckBuilder**
+**Builder **-- in sample code: **CarBuilder, TruckBuilder**
 
 * implements the multistep Builder interface
 * maintains the product through the assembly process
