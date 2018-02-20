@@ -1,6 +1,17 @@
 # Design Patterns
 
+The short articles about Design Patterns solutions and some examples.
+
 ## Categories Of Design Pattern
+
+A glossary from the well-known design book, Domain-Driven Terms, rightly states that.
+A design pattern names, abstracts, and identifies the key aspects of a common design structure that make it useful for creating a reusable object-oriented design. The design pattern identifies the participating classes and their instances, their roles and collaborations, and the distribution of responsibilities.
+
+Each design pattern focuses on a particular object-oriented design problem or issue. It describes when it applies, whether or not it can be applied in view of other design constraints, and the consequences and trade-offs of its use. Since we must eventually implement our designs, a design pattern also provides sample ... code to illustrate an implementation.
+
+Although design patterns describe object-oriented designs, they are based on practical solutions that have been implemented in mainstream object-oriented programming languages ...
+
+Design patterns can be broken down into a number of different categories. In this section we’ll review three of these categories and briefly mention a few examples of the patterns that fall into these categories before exploring specific ones in more detail.
 
 ### Creational Design Patterns
 
