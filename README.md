@@ -8,20 +8,6 @@ Creational design patterns focus on handling object creation mechanisms where ob
 
 Some of the patterns that fall under this category are: Constructor, Factory, Abstract, Prototype, Singleton and Builder.
 
-### Structural Design Patterns
-
-Structural patterns are concerned with object composition and typically identify simple ways to realize relationships between different objects. They help ensure that when one part of a system changes, the entire structure of the system doesn't need to do the same. They also assist in recasting parts of the system which don't fit a particular purpose into those that do.
-
-Patterns that fall under this category include: Decorator, Facade, Flyweight, Adapter and Proxy.
-
-### Behavioral Design Patterns
-
-Behavioral patterns focus on improving or streamlining the communication between disparate objects in a system.
-
-Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
-
-### Table of Design Patterns
-
 | Category | Name | Description |
 | :--- | :--- | :--- |
 | Creational | `Abstract Factory` | Creates an instance of several families of classes |
@@ -29,6 +15,15 @@ Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
 | Creational | `Factory Method` | Creates an instance of several derived classes |
 | Creational | `Prototype` | A fully initialized instance to be copied or cloned |
 | Creational | `Singleton` | A class of which only a single instance can exist |
+
+### Structural Design Patterns
+
+Structural patterns are concerned with object composition and typically identify simple ways to realize relationships between different objects. They help ensure that when one part of a system changes, the entire structure of the system doesn't need to do the same. They also assist in recasting parts of the system which don't fit a particular purpose into those that do.
+
+Patterns that fall under this category include: Decorator, Facade, Flyweight, Adapter and Proxy.
+
+| Category | Name | Description |
+| :--- | :--- | :--- |
 | Structural | `Adapter` | Match interfaces of different classes |
 | Structural | `Bridge` | Separates an object’s interface from its implementation |
 | Structural | `Composite` | A tree structure of simple and composite objects |
@@ -36,6 +31,15 @@ Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
 | Structural | `Facade` | A single class that represents an entire subsystem |
 | Structural | `Flyweight` | A fine-grained instance used for efficient sharing |
 | Structural | `Proxy` | An object representing another object |
+
+### Behavioral Design Patterns
+
+Behavioral patterns focus on improving or streamlining the communication between disparate objects in a system.
+
+Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
+
+| Category | Name | Description |
+| :--- | :--- | :--- |
 | Behavioral | `Chain of Resp.` | A way of passing a request between a chain of objects |
 | Behavioral | `Command` | Encapsulate a command request as an object |
 | Behavioral | `Interpreter` | A way to include language elements in a program |
@@ -47,6 +51,3 @@ Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
 | Behavioral | `Strategy` | Encapsulates an algorithm inside a class |
 | Behavioral | `Template Method` | Defer the exact steps of an algorithm to a subclass |
 | Behavioral | `Visitor` | Defines a new operation to a class without change |
-
-
-
