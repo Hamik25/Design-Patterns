@@ -8,7 +8,7 @@
   * [Prototype](creational-design-patterns/prototype.md)
   * [Singltone](creational-design-patterns/singltone.md)
 * [Structural Design Patterns](structural-design-patterns.md)
-  * Adapter
+  * [Adapter](structural-design-patterns/adapter.md)
   * Bridge
   * Composite
   * Decorator
