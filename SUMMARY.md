@@ -9,9 +9,9 @@
   * [Singltone](creational-design-patterns/singltone.md)
 * [Structural Design Patterns](structural-design-patterns.md)
   * [Adapter](structural-design-patterns/adapter.md)
-  * Bridge
+  * [Bridge](structural-design-patterns/bridge.md)
   * Composite
-  * Decorator
+  * [Decorator](structural-design-patterns/decorator.md)
   * Facade
   * Flyweight
   * Proxy
