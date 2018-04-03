@@ -10,7 +10,7 @@
 * [Structural Design Patterns](structural-design-patterns.md)
   * [Adapter](structural-design-patterns/adapter.md)
   * [Bridge](structural-design-patterns/bridge.md)
-  * Composite
+  * [Composite](structural-design-patterns/composite.md)
   * [Decorator](structural-design-patterns/decorator.md)
   * Facade
   * Flyweight
