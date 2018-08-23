@@ -12,19 +12,19 @@
   * [Bridge](structural-design-patterns/bridge.md)
   * [Composite](structural-design-patterns/composite.md)
   * [Decorator](structural-design-patterns/decorator.md)
-  * Facade
-  * Flyweight
-  * Proxy
+  * [Facade](structural-design-patterns/facade.md)
+  * [Flyweight](structural-design-patterns/flyweight.md)
+  * [Proxy](structural-design-patterns/proxy.md)
 * Behavioral Design Patterns
-  * Chain of Resp.
-  * Command
-  * Interpreter
-  * Iterator
-  * Mediator
-  * Memento
-  * Observer
-  * State
-  * Strategy
-  * Template Method
-  * Visitor
+  * [Chain of Resp.](chain-of-resp.md)
+  * [Command](command.md)
+  * [Interpreter](interpreter.md)
+  * [Iterator](iterator.md)
+  * [Mediator](mediator.md)
+  * [Memento](memento.md)
+  * [Observer](observer.md)
+  * [State](state.md)
+  * [Strategy](strategy.md)
+  * [Template Method](template-method.md)
+  * [Visitor](visitor.md)
 
