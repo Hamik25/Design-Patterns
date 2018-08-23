@@ -2,13 +2,9 @@
 
 ---
 
-
-
 #### Definition
 
 Attach additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.
-
-
 
 #### Summary
 
@@ -38,52 +34,54 @@ The objects participating in this pattern are:
 * defines an interface that conforms to Component's interface
 * implements the additional functionality \(addedMembers in diagram\)
 
-
-
 #### Sample code in JavaScript
+
+In the example code a User object is decorated \(enhanced\) by a DecoratedUser object. It extends the User with several address-based properties. The original interface must stay the same, which explains why user.name is assigned to this.name. Also, the say method of DecoratedUser hides the say method of User.
+
+The log function is a helper which collects and displays results.
 
 ```js
 // Component
 var User = function(name) {
-	this.name = name;
+    this.name = name;
 };
 
 User.prototype.say = function() {
-	log.add('User: ' + this.name);
+    log.add('User: ' + this.name);
 };
 
 // Decorator
 var DecoratedUser = function(user, street, city) {
-	this.user = user;
-	this.name = user.name; // ensures interface stays the same
-	this.street = street;
-	this.city = city;
+    this.user = user;
+    this.name = user.name; // ensures interface stays the same
+    this.street = street;
+    this.city = city;
 };
 
 DecoratedUser.prototype.say = function() {
-	log.add('Decorated User: ' + this.name + ', ' + this.street + ', ' + this.city);
+    log.add('Decorated User: ' + this.name + ', ' + this.street + ', ' + this.city);
 };
 
 // Logging helper
 var log = (function() {
-	var log = '';
+    var log = '';
 
-	return {
-		add: function(msg) { log += msg + "\n"; },
-		show: function() { console.log(log); log = ''; }
-	}
+    return {
+        add: function(msg) { log += msg + "\n"; },
+        show: function() { console.log(log); log = ''; }
+    }
 })();
 
 // Client
 function run() {
-	// Component instance
-	var user = new User("David");
-	user.say();
+    // Component instance
+    var user = new User("David");
+    user.say();
 
-	var decoratedUser = new DecoratedUser(user, "Abovyan", "Yervan");
-	decoratedUser.say();
+    var decoratedUser = new DecoratedUser(user, "Abovyan", "Yervan");
+    decoratedUser.say();
 
-	log.show();
+    log.show();
 };
 ```
 
