@@ -32,7 +32,7 @@ The objects participating in this pattern are:
 
 * represents branches \(or sub trees\) in the composition
 
-* maintains a collection if child 
+* maintains a collection if child
 
 #### 
 
@@ -40,7 +40,7 @@ The objects participating in this pattern are:
 
 In our example a tree structure is created from Node objects. Each node has a name and 4 methods: add, remove, getChild and hasChild. The methods are added to Node's prototype. This reducer the memory requirements as these methods are now shared by all now shared by all nodes. Node is fully recursive and there is no need for separate Component or Leaf objects.
 
-A small Composite tree is built by adding nodes to parent nodes. Once complete we invoke traverse which iterates over each node in the tree and displays its name and depth \(by showing indentation\) 
+A small Composite tree is built by adding nodes to parent nodes. Once complete we invoke traverse which iterates over each node in the tree and displays its name and depth \(by showing indentation\)
 
 The log function is a helper which collects and displays results..
 
