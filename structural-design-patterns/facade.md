@@ -36,6 +36,12 @@ The objects participating in this pattern are:
 
 #### Sample code in JavaScript
 
+The Mortgage object is the Facade in the sample code. It presents a simple interface to the client with only a single method: applyFor. Eut underneath this simple API lies considerable complexity.
+
+The applicant's name is passed into the Mortgage constructor function. Then the applyFor method is called with the requested loan amount. Internally, this method uses services from 3 separate subsystems that are complex and possibly take some time to process: they are Bank, Credit and Background.
+
+Based on several criteria \(bank statements, credit reports and criminal background\) the applicant is either accepted or denied for the requested loan.
+
 ```js
 // Component
 var User = function(name) {
