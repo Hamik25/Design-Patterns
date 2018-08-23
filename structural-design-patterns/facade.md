@@ -32,8 +32,6 @@ The objects participating in this pattern are:
 * implements and performs specialized subsystem functionality
 * have no knowledge of  or reference to the facade
 
-
-
 #### Sample code in JavaScript
 
 The Mortgage object is the Facade in the sample code. It presents a simple interface to the client with only a single method: applyFor. Eut underneath this simple API lies considerable complexity.
@@ -43,47 +41,66 @@ The applicant's name is passed into the Mortgage constructor function. Then the 
 Based on several criteria \(bank statements, credit reports and criminal background\) the applicant is either accepted or denied for the requested loan.
 
 ```js
-// Component
-var User = function(name) {
-    this.name = name;
+// Facade
+var Mortgage = function(name) {
+	this.name = name;
 };
 
-User.prototype.say = function() {
-    log.add('User: ' + this.name);
+// Method
+Mortgage.prototype.applyFor = function(amount) {
+	// Access multiple subsystems
+	var result = 'approved';
+
+	if (!new Bank().verify(this.name, amount) 
+		|| !new Credit().get(this.name)
+		|| !new Background().check(this.name)) {
+
+		result = 'denied';
+	}
+
+	return this.name + ' has been ' + result + ' for a ' + amount + ' mortgage.';
 };
 
-// Decorator
-var DecoratedUser = function(user, street, city) {
-    this.user = user;
-    this.name = user.name; // ensures interface stays the same
-    this.street = street;
-    this.city = city;
+// Sub system 1
+var Bank = function() {
+	this.verify = function(name, amount) {
+		// Complex logic
+		return true;
+	};
 };
 
-DecoratedUser.prototype.say = function() {
-    log.add('Decorated User: ' + this.name + ', ' + this.street + ', ' + this.city);
+// Sub system 2
+var Credit = function() {
+	this.get = function(name) {
+		// Complex logic
+		return true;
+	}
 };
 
-// Logging helper
-var log = (function() {
-    var log = '';
+// Sub  system 3
+var Background = function() {
+	this.check = function(name) {
+		// Complex logic
+		return true;
+	}
+};
 
+// Log helper
+var log = (function () {
+    var log = "";
+ 
     return {
-        add: function(msg) { log += msg + "\n"; },
-        show: function() { console.log(log); log = ''; }
+        add: function (msg) { log += msg + "\n"; },
+        show: function () { console.log(log); log = ""; }
     }
 })();
 
 // Client
 function run() {
-    // Component instance
-    var user = new User("David");
-    user.say();
+	var mortgage = new Mortgage('Jhon Templeton');
 
-    var decoratedUser = new DecoratedUser(user, "Abovyan", "Yervan");
-    decoratedUser.say();
-
-    log.show();
+	log.add(mortgage.applyFor('$100,000'));
+	log.show();
 };
 ```
 
