@@ -45,70 +45,84 @@ A small Composite tree is built by adding nodes to parent nodes. Once complete w
 The log function is a helper which collects and displays results..
 
 ```js
-// Adaptee
-var Mp3MusicPlayer = function(track) {
-    this.track = track;
+// Node
+var Node = function(name) {
+	this.children = [];
+	this.name = name;
 };
 
-Mp3MusicPlayer.prototype.play = function() {
-    if (!this.track || !this.track.title) return;
-    if (this.track.ext !== 'mp3') return 'Stop: This player can play only mp3 tracks';
-    return 'Start: ' + this.track.title;
+// Add Method
+Node.prototype.add = function(child) {
+	this.children.push(child);
 };
 
-
-// Adapter
-var MusicPlayerAdapter = function(ext) {
-    this.ext = ext;
+// Remove Method
+Node.prototype.remove = function(child) {
+	var length = this.children.length;
+	for (var i = 0; i < length; i++) {
+		if (this.children[i] === child) {
+			this.children.splice(i, 1);
+			return;
+		}
+	}
 };
 
-MusicPlayerAdapter.prototype.request = function(track) {
-    if (!track) return;
-
-    var mp3PlayerTrackModel = {
-        title: track.title,
-        originalExt: track.format,
-        ext: this.ext
-    };
-
-    return mp3PlayerTrackModel;
+// Get Child Method
+Node.prototype.getChild = function(i) {
+	return this.children[i];
 };
 
+// Has Child Method
+Node.prototype.hasChiled = function() {
+	return this.children.length > 0;
+};
+
+// Recursively traverse a sub tree
+function traverse(indent, node) {
+	var length = node.children.length;
+	log.add(Array(indent++).join('--') + node.name);
+
+	for (var i = 0; i < length; i++) {
+		traverse(indent, node.getChild(i));
+	}
+};
 
 // Log helper
 var log = (function () {
     var log = "";
-
+ 
     return {
         add: function (msg) { log += msg + "\n"; },
         show: function () { console.log(log); log = ""; }
     }
 })();
 
-
 // Client
 function run() {
-    // Instance of MusicPlayerAdapter
-    var musicPlayerAdapter = new MusicPlayerAdapter('mp3');
+	// Instance of Node
+	var tree = new Node('root'),
+		left = new Node('left'),
+		right = new Node('right'),
+		leftLeft = new Node('leftLeft'),
+		leftRight = new Node('leftRight'),
+		rightLeft = new Node('rightLeft'),
+		rightRight = new Node('rightRight');
 
-    var track1Model = {
-        title: 'Galamukani (James Sakala) - Electric Violin Cover | Caitlin De Ville',
-        format: 'mp4'
-    };
+	tree.add(left);
+	tree.add(right);
+	tree.remove(right);
+	tree.add(right);
 
-    var track2Model = {
-        title: 'Alone (Alan Walker) - Electric Violin Cover | Caitlin De Ville',
-        format: 'mp4'
-    };
+	left.add(leftLeft);
+	left.add(leftRight);
 
-    var track1 = new Mp3MusicPlayer(musicPlayerAdapter.request(track1Model));
-    log.add(track1.play());
+	right.add(rightLeft);
+	right.add(rightRight);
 
-    var track2 = new Mp3MusicPlayer(track2Model);
-    log.add(track2.play());
+	traverse(1, tree);
 
-    log.show();
-}
+	log.show();
+};
 ```
 
 #### 
