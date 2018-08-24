@@ -47,63 +47,63 @@ The log function is a helper which collects and displays results.
 ```js
 // Flyweight
 var Flyweight = function(make, model, processor) {
-	this.make = make;
-	this.model = model;
-	this.processor = processor;
+    this.make = make;
+    this.model = model;
+    this.processor = processor;
 };
 
 // Flyweight Factory
 var FlyWeightFactory = (function() {
-	
-	var flyweights = {};
 
-	return {
-		get: function(make, model, processor) {
-			var key = make + model;
+    var flyweights = {};
 
-			if (!flyweights[key]) {
-				flyweights[key] = new Flyweight(make, model, processor);
-			}
+    return {
+        get: function(make, model, processor) {
+            var key = make + model;
 
-			return flyweights[key];
-		},
-		getCount: function() {
-			return Object.keys(flyweights).length;
-		}
-	}
+            if (!flyweights[key]) {
+                flyweights[key] = new Flyweight(make, model, processor);
+            }
+
+            return flyweights[key];
+        },
+        getCount: function() {
+            return Object.keys(flyweights).length;
+        }
+    }
 })();
 
 // Computer Collection
 var ComputerCollection = function(make, model, processor, memory, tag) {
-	var computers = {};
+    var computers = {};
 
-	return {
-		add: function(make, model, processor, memory, tag) {
-			computers[tag] = new Computer(make, model, processor, memory, tag);
-		},
-		get: function(tag) {
-			return computers[tag];
-		},
-		getCount: function() {
-			return Object.keys(computers).length;
-		}
-	};
+    return {
+        add: function(make, model, processor, memory, tag) {
+            computers[tag] = new Computer(make, model, processor, memory, tag);
+        },
+        get: function(tag) {
+            return computers[tag];
+        },
+        getCount: function() {
+            return Object.keys(computers).length;
+        }
+    };
 };
 
 // Computer
 var Computer = function(make, model, processor, memory, tag) {
-	this.flyweight = FlyWeightFactory.get(make, model, processor);
-	this.memory = memory;
-	this.tag = tag;
-	this.getMake = function() {
-		return this.flyweight.make;
-	};
+    this.flyweight = FlyWeightFactory.get(make, model, processor);
+    this.memory = memory;
+    this.tag = tag;
+    this.getMake = function() {
+        return this.flyweight.make;
+    };
 }
 
 // Log helper
 var log = (function () {
     var log = '';
- 
+
     return {
         add: function (msg) { log += msg + '\n'; },
         show: function () { console.log(log); log = ''; }
@@ -112,9 +112,9 @@ var log = (function () {
 
 // Client
 function run() {
-	var computers = new ComputerCollection();
+    var computers = new ComputerCollection();
 
-	computers.add('Dell', 'Studio XPS', 'Intel', '5G', 'Y755P');
+    computers.add('Dell', 'Studio XPS', 'Intel', '5G', 'Y755P');
     computers.add('Dell', 'Studio XPS', 'Intel', '6G', 'X997T');
     computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'U8U80');
     computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'NT777');
