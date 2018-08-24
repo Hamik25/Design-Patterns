@@ -4,7 +4,7 @@ The short articles about Design Patterns solutions and some examples.
 
 ## Categories Of Design Pattern
 
-A glossary from the well-known design book, Domain-Driven Terms, rightly states that.
+A glossary from the well-known design book, Domain-Driven Terms, rightly states that.  
 A design pattern names, abstracts, and identifies the key aspects of a common design structure that make it useful for creating a reusable object-oriented design. The design pattern identifies the participating classes and their instances, their roles and collaborations, and the distribution of responsibilities.
 
 Each design pattern focuses on a particular object-oriented design problem or issue. It describes when it applies, whether or not it can be applied in view of other design constraints, and the consequences and trade-offs of its use. Since we must eventually implement our designs, a design pattern also provides sample ... code to illustrate an implementation.
@@ -62,3 +62,6 @@ Some behavioral patterns include: Iterator, Mediator, Observer and Visitor.
 | Behavioral | `Strategy` | Encapsulates an algorithm inside a class |
 | Behavioral | `Template Method` | Defer the exact steps of an algorithm to a subclass |
 | Behavioral | `Visitor` | Defines a new operation to a class without change |
+
+
+
