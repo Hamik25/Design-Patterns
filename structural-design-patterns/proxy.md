@@ -43,65 +43,44 @@ Several city locations are queried and many of these are for the same city. GeoP
 The log function is a helper which collects and displays results.
 
 ```js
-// Flyweight
-var Flyweight = function(make, model, processor) {
-    this.make = make;
-    this.model = model;
-    this.processor = processor;
+// Geo Coder - Real Subject
+var GeoCoder = function() {
+
+	var addresses = {
+		'Amsterdam': '52.3700° N, 4.8900° E',
+		'London': '51.5171° N, 0.1062° W',
+		'Paris': '48.8742° N, 2.3470° E',
+		'Berlin': '52.5233° N, 13.4127° E'
+	};
+
+	this.getLatLng = function(address) {
+		return addresses.hasOwnProperty(address) ? addresses[address] : 'Address Is Not Found';
+	};
 };
 
-// Flyweight Factory
-var FlyWeightFactory = (function() {
+// Geo Proxy - Proxy
+var GeoProxy = function() {
+	var geoCoder = new GeoCoder();
+	var geoCache = {};
 
-    var flyweights = {};
-
-    return {
-        get: function(make, model, processor) {
-            var key = make + model;
-
-            if (!flyweights[key]) {
-                flyweights[key] = new Flyweight(make, model, processor);
-            }
-
-            return flyweights[key];
-        },
-        getCount: function() {
-            return Object.keys(flyweights).length;
-        }
-    }
-})();
-
-// Computer Collection
-var ComputerCollection = function(make, model, processor, memory, tag) {
-    var computers = {};
-
-    return {
-        add: function(make, model, processor, memory, tag) {
-            computers[tag] = new Computer(make, model, processor, memory, tag);
-        },
-        get: function(tag) {
-            return computers[tag];
-        },
-        getCount: function() {
-            return Object.keys(computers).length;
-        }
-    };
+	return {
+		getLatLng: function(address) {
+			if (!geoCache[address]) {
+				geoCache[address] = geoCoder.getLatLng(address);
+			}
+			log.add(address + ': ' + geoCache[address]);
+			return geoCache[address];
+		},
+		getCount: function() {
+			return Object.keys(geoCache).length;
+		}
+	};
 };
-
-// Computer
-var Computer = function(make, model, processor, memory, tag) {
-    this.flyweight = FlyWeightFactory.get(make, model, processor);
-    this.memory = memory;
-    this.tag = tag;
-    this.getMake = function() {
-        return this.flyweight.make;
-    };
-}
 
 // Log helper
 var log = (function () {
     var log = '';
-
+ 
     return {
         add: function (msg) { log += msg + '\n'; },
         show: function () { console.log(log); log = ''; }
@@ -110,18 +89,22 @@ var log = (function () {
 
 // Client
 function run() {
-    var computers = new ComputerCollection();
+	var geo = new GeoProxy();
 
-    computers.add('Dell', 'Studio XPS', 'Intel', '5G', 'Y755P');
-    computers.add('Dell', 'Studio XPS', 'Intel', '6G', 'X997T');
-    computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'U8U80');
-    computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'NT777');
-    computers.add('Dell', 'Studio XPS', 'Intel', '2G', '0J88A');
-    computers.add('HP', 'Envy', 'Intel', '4G', 'CNU883701');
-    computers.add('HP', 'Envy', 'Intel', '2G', 'TXU003283');
+	// Geolocation Requests
+	geo.getLatLng("Paris");
+    geo.getLatLng("London");
+    geo.getLatLng("London");
+    geo.getLatLng("London");
+    geo.getLatLng("London");
+    geo.getLatLng("Amsterdam");
+    geo.getLatLng("Amsterdam");
+    geo.getLatLng("Amsterdam");
+    geo.getLatLng("Amsterdam");
+    geo.getLatLng("London");
+    geo.getLatLng("London");
 
-    log.add('Computers: ' + computers.getCount());
-    log.add('Flyweights: ' + FlyWeightFactory.getCount());
+    log.add('\nCache size: ' + geo.getCount());
     log.show();
 };
 ```
