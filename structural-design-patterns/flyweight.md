@@ -45,65 +45,85 @@ Several different computers are added to ComputerCollection. At the end we have 
 The log function is a helper which collects and displays results.
 
 ```js
-// Facade
-var Mortgage = function(name) {
-    this.name = name;
+// Flyweight
+var Flyweight = function(make, model, processor) {
+	this.make = make;
+	this.model = model;
+	this.processor = processor;
 };
 
-// Method
-Mortgage.prototype.applyFor = function(amount) {
-    // Access multiple subsystems
-    var result = 'approved';
+// Flyweight Factory
+var FlyWeightFactory = (function() {
+	
+	var flyweights = {};
 
-    if (!new Bank().verify(this.name, amount) 
-        || !new Credit().get(this.name)
-        || !new Background().check(this.name)) {
+	return {
+		get: function(make, model, processor) {
+			var key = make + model;
 
-        result = 'denied';
-    }
+			if (!flyweights[key]) {
+				flyweights[key] = new Flyweight(make, model, processor);
+			}
 
-    return this.name + ' has been ' + result + ' for a ' + amount + ' mortgage.';
+			return flyweights[key];
+		},
+		getCount: function() {
+			return Object.keys(flyweights).length;
+		}
+	}
+})();
+
+// Computer Collection
+var ComputerCollection = function(make, model, processor, memory, tag) {
+	var computers = {};
+
+	return {
+		add: function(make, model, processor, memory, tag) {
+			computers[tag] = new Computer(make, model, processor, memory, tag);
+		},
+		get: function(tag) {
+			return computers[tag];
+		},
+		getCount: function() {
+			return Object.keys(computers).length;
+		}
+	};
 };
 
-// Sub system 1
-var Bank = function() {
-    this.verify = function(name, amount) {
-        // Complex logic
-        return true;
-    };
-};
-
-// Sub system 2
-var Credit = function() {
-    this.get = function(name) {
-        // Complex logic
-        return true;
-    }
-};
-
-// Sub  system 3
-var Background = function() {
-    this.check = function(name) {
-        // Complex logic
-        return true;
-    }
-};
+// Computer
+var Computer = function(make, model, processor, memory, tag) {
+	this.flyweight = FlyWeightFactory.get(make, model, processor);
+	this.memory = memory;
+	this.tag = tag;
+	this.getMake = function() {
+		return this.flyweight.make;
+	};
+}
 
 // Log helper
 var log = (function () {
-    var log = "";
-
+    var log = '';
+ 
     return {
-        add: function (msg) { log += msg + "\n"; },
-        show: function () { console.log(log); log = ""; }
+        add: function (msg) { log += msg + '\n'; },
+        show: function () { console.log(log); log = ''; }
     }
 })();
 
 // Client
 function run() {
-    var mortgage = new Mortgage('Jhon Templeton');
+	var computers = new ComputerCollection();
 
-    log.add(mortgage.applyFor('$100,000'));
+	computers.add('Dell', 'Studio XPS', 'Intel', '5G', 'Y755P');
+    computers.add('Dell', 'Studio XPS', 'Intel', '6G', 'X997T');
+    computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'U8U80');
+    computers.add('Dell', 'Studio XPS', 'Intel', '2G', 'NT777');
+    computers.add('Dell', 'Studio XPS', 'Intel', '2G', '0J88A');
+    computers.add('HP', 'Envy', 'Intel', '4G', 'CNU883701');
+    computers.add('HP', 'Envy', 'Intel', '2G', 'TXU003283');
+
+    log.add('Computers: ' + computers.getCount());
+    log.add('Flyweights: ' + FlyWeightFactory.getCount());
     log.show();
 };
 ```
